@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(KenLee());
 }
 
-class MyApp extends StatelessWidget {
+class KenLee extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -47,6 +47,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _counter = 0;
+  int index = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -107,6 +108,44 @@ class _HomePageState extends State<HomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.white,
+        currentIndex: index,
+        showUnselectedLabels: false,
+        onTap: (int) {
+          setState(() {
+            index = int;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.blue,
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home_rounded),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.blue,
+            icon: Icon(Icons.person_pin_outlined),
+            activeIcon: Icon(Icons.person_pin_rounded),
+            label: "About",
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.blue,
+            icon: Icon(Icons.camera_alt_outlined),
+            activeIcon: Icon(Icons.camera_alt_rounded),
+            label: "Photo",
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.blue,
+            icon: Icon(Icons.link_outlined),
+            activeIcon: Icon(Icons.link_rounded),
+            label: "Links",
+          ),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
