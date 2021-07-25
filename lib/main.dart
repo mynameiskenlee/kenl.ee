@@ -11,16 +11,37 @@ class KenLee extends StatelessWidget {
     return MaterialApp(
       title: 'Ken Lee',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+          primaryColor: Colors.blue,
+          primaryColorBrightness: Brightness.dark,
+          brightness: Brightness.light,
+          primaryColorDark: Colors.black,
+          primaryColorLight: Colors.blue,
+          canvasColor: Colors.white,
+          backgroundColor: Colors.blue,
+          // next line is important!
+          appBarTheme: AppBarTheme(
+            brightness: Brightness.dark,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          bottomNavigationBarTheme:
+              BottomNavigationBarThemeData(backgroundColor: Colors.blue)),
+      darkTheme: ThemeData(
+        primaryColor: Colors.grey[700],
+        primaryColorBrightness: Brightness.dark,
+        primaryColorLight: Colors.black,
+        brightness: Brightness.dark,
+        primaryColorDark: Colors.black,
+        indicatorColor: Colors.white,
+        canvasColor: Colors.black,
+        // next line is important!
+        appBarTheme: AppBarTheme(
+          brightness: Brightness.dark,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+          ),
+        ),
       ),
       home: HomePage(title: 'Ken Lee'),
     );
@@ -46,19 +67,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
   int index = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,43 +83,41 @@ class _HomePageState extends State<HomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height - kBottomNavigationBarHeight - kToolbarHeight,
+          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: MediaQuery.of(context).size.height - kBottomNavigationBarHeight - kToolbarHeight,
+              minWidth: double.infinity
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            child: Center(
+              // Center is a layout widget. It takes a single child and positions it
+              // in the middle of the parent.
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Container(
+                  width: double.infinity,
+                  child: Card(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Coming soon...',
+                          // style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
+        // backgroundColor: Theme.of(context).backgroundColor,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white60,
         currentIndex: index,
@@ -120,28 +127,28 @@ class _HomePageState extends State<HomePage> {
             index = int;
           });
         },
-        type: BottomNavigationBarType.fixed,
+        // type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).backgroundColor,
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home_rounded),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).backgroundColor,
             icon: Icon(Icons.person_pin_outlined),
             activeIcon: Icon(Icons.person_pin_rounded),
             label: "About",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).backgroundColor,
             icon: Icon(Icons.camera_alt_outlined),
             activeIcon: Icon(Icons.camera_alt_rounded),
             label: "Photo",
           ),
           BottomNavigationBarItem(
-            backgroundColor: Colors.blue,
+            backgroundColor: Theme.of(context).backgroundColor,
             icon: Icon(Icons.link_outlined),
             activeIcon: Icon(Icons.link_rounded),
             label: "Links",
