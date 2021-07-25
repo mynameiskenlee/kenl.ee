@@ -11,13 +11,13 @@ class KenLee extends StatelessWidget {
     return MaterialApp(
       title: 'Ken Lee',
       theme: ThemeData(
-          primaryColor: Colors.blue,
+          primaryColor: Color.fromRGBO(128, 184, 239, 1),
           primaryColorBrightness: Brightness.dark,
           brightness: Brightness.light,
           primaryColorDark: Colors.black,
-          primaryColorLight: Colors.blue,
+          primaryColorLight: Color.fromRGBO(128, 184, 239, 1),
           canvasColor: Colors.white,
-          backgroundColor: Colors.blue,
+          backgroundColor: Color.fromRGBO(128, 184, 239, 1),
           // next line is important!
           appBarTheme: AppBarTheme(
             brightness: Brightness.dark,
@@ -149,24 +149,23 @@ class _HomePageState extends State<HomePage>
             child: Scrollbar(
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: (constraints.maxWidth >= 480) ? 8 : 0),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height -
-                          ((constraints.maxWidth >= 480)
-                              ? kToolbarHeight + 18
-                              : kBottomNavigationBarHeight) -
-                          kToolbarHeight,
-                      minWidth: double.infinity),
-                  child: Center(
-                    // Center is a layout widget. It takes a single child and positions it
-                    // in the middle of the parent.
+                    horizontal: 16,
+                    vertical: (constraints.maxWidth >= 480) ? 16 : 0),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height -
+                            ((constraints.maxWidth >= 480)
+                                ? kToolbarHeight + 18
+                                : kBottomNavigationBarHeight) -
+                            kToolbarHeight,
+                        maxWidth: 984,),
                     child: Padding(
                       padding: const EdgeInsets.all(0.0),
                       child: Container(
                         width: double.infinity,
                         child: Card(
+                          elevation: 0,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
