@@ -71,6 +71,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<BottomNavigationBarItem> bottomNav = [
+      BottomNavigationBarItem(
+        backgroundColor: Theme.of(context).backgroundColor,
+        icon: Icon(Icons.home_outlined),
+        activeIcon: Icon(Icons.home_rounded),
+        label: "Home",
+      ),
+      BottomNavigationBarItem(
+        backgroundColor: Theme.of(context).backgroundColor,
+        icon: Icon(Icons.person_pin_outlined),
+        activeIcon: Icon(Icons.person_pin_rounded),
+        label: "About",
+      ),
+      BottomNavigationBarItem(
+        backgroundColor: Theme.of(context).backgroundColor,
+        icon: Icon(Icons.camera_alt_outlined),
+        activeIcon: Icon(Icons.camera_alt_rounded),
+        label: "Photo",
+      ),
+      BottomNavigationBarItem(
+        backgroundColor: Theme.of(context).backgroundColor,
+        icon: Icon(Icons.link_outlined),
+        activeIcon: Icon(Icons.link_rounded),
+        label: "Links",
+      ),
+    ];
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -85,13 +111,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height - kBottomNavigationBarHeight - kToolbarHeight,
+          height: MediaQuery.of(context).size.height -
+              kBottomNavigationBarHeight -
+              kToolbarHeight,
           decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height - kBottomNavigationBarHeight - kToolbarHeight,
-              minWidth: double.infinity
-            ),
+                minHeight: MediaQuery.of(context).size.height -
+                    kBottomNavigationBarHeight -
+                    kToolbarHeight,
+                minWidth: double.infinity),
             child: Center(
               // Center is a layout widget. It takes a single child and positions it
               // in the middle of the parent.
@@ -116,44 +145,26 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        // backgroundColor: Theme.of(context).backgroundColor,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white60,
-        currentIndex: index,
-        showUnselectedLabels: false,
-        onTap: (int) {
-          setState(() {
-            index = int;
-          });
+      bottomNavigationBar: LayoutBuilder(
+        builder: (BuildContext ctx, BoxConstraints constraints) {
+          BottomNavigationBarType type = (constraints.maxWidth >= 480)
+              ? BottomNavigationBarType.fixed
+              : BottomNavigationBarType.shifting;
+          return BottomNavigationBar(
+            // backgroundColor: Theme.of(context).backgroundColor,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white60,
+            currentIndex: index,
+            showUnselectedLabels: false,
+            onTap: (int) {
+              setState(() {
+                index = int;
+              });
+            },
+            type: type,
+            items: bottomNav,
+          );
         },
-        // type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).backgroundColor,
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home_rounded),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).backgroundColor,
-            icon: Icon(Icons.person_pin_outlined),
-            activeIcon: Icon(Icons.person_pin_rounded),
-            label: "About",
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).backgroundColor,
-            icon: Icon(Icons.camera_alt_outlined),
-            activeIcon: Icon(Icons.camera_alt_rounded),
-            label: "Photo",
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Theme.of(context).backgroundColor,
-            icon: Icon(Icons.link_outlined),
-            activeIcon: Icon(Icons.link_rounded),
-            label: "Links",
-          ),
-        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
