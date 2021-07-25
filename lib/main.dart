@@ -70,16 +70,6 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   int index = 0;
 
-  late TabController _tabController;
-
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      length: 4,
-      vsync: this,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     List<BottomNavigationBarItem> bottomNav = [
@@ -127,23 +117,27 @@ class _HomePageState extends State<HomePage>
           bottom: (constraints.maxWidth >= 480)
               ? PreferredSize(
                   preferredSize: Size.fromHeight(kToolbarHeight),
-                  child: BottomNavigationBar(
-                    elevation: 0,
-                    type: BottomNavigationBarType.fixed,
-                    backgroundColor: Theme.of(context).backgroundColor,
-                    selectedItemColor: Colors.white,
-                    unselectedItemColor: Colors.white60,
-                    currentIndex: index,
-                    showUnselectedLabels: false,
-                    onTap: (int) {
-                      setState(() {
-                        index = int;
-                        _tabController.index = int;
-                      });
-                    },
-                    items: bottomNav,
-                  )
-                )
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 768),
+                      child: BottomNavigationBar(
+                        elevation: 0,
+                        type: BottomNavigationBarType.fixed,
+                        backgroundColor: Theme.of(context).backgroundColor,
+                        selectedItemColor: Colors.white,
+                        unselectedItemColor: Colors.white60,
+                        currentIndex: index,
+                        showUnselectedLabels: false,
+                        onTap: (int) {
+                          setState(() {
+                            index = int;
+                          });
+                        },
+                        items: bottomNav,
+                      ),
+                    ),
+                  ))
               : null,
         ),
         body: SingleChildScrollView(
@@ -203,7 +197,6 @@ class _HomePageState extends State<HomePage>
                 onTap: (int) {
                   setState(() {
                     index = int;
-                    _tabController.index = int;
                   });
                 },
                 items: bottomNav,
