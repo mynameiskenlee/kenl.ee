@@ -66,8 +66,19 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   int index = 0;
+
+  late TabController _tabController;
+
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      length: 4,
+      vsync: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,46 +108,82 @@ class _HomePageState extends State<HomePage> {
         label: "Links",
       ),
     ];
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height -
-              kBottomNavigationBarHeight -
-              kToolbarHeight,
-          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height -
-                    kBottomNavigationBarHeight -
-                    kToolbarHeight,
-                minWidth: double.infinity),
-            child: Center(
-              // Center is a layout widget. It takes a single child and positions it
-              // in the middle of the parent.
+    return LayoutBuilder(
+        builder: (BuildContext ctx, BoxConstraints constraints) {
+      return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text(widget.title),
+          actions: [],
+          bottom: (constraints.maxWidth >= 480)
+              ? PreferredSize(
+                  preferredSize: Size.fromHeight(kToolbarHeight),
+                  child: BottomNavigationBar(
+                    elevation: 0,
+                    type: BottomNavigationBarType.fixed,
+                    backgroundColor: Theme.of(context).backgroundColor,
+                    selectedItemColor: Colors.white,
+                    unselectedItemColor: Colors.white60,
+                    currentIndex: index,
+                    showUnselectedLabels: false,
+                    onTap: (int) {
+                      setState(() {
+                        index = int;
+                        _tabController.index = int;
+                      });
+                    },
+                    items: bottomNav,
+                  )
+                )
+              : null,
+        ),
+        body: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height -
+                kBottomNavigationBarHeight -
+                kToolbarHeight,
+            decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+            child: Scrollbar(
               child: Padding(
-                padding: const EdgeInsets.all(0.0),
-                child: Container(
-                  width: double.infinity,
-                  child: Card(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Coming soon...',
-                          // style: TextStyle(color: Colors.white),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: (constraints.maxWidth >= 480) ? 8 : 0),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                      minHeight: MediaQuery.of(context).size.height -
+                          ((constraints.maxWidth >= 480)
+                              ? kToolbarHeight + 18
+                              : kBottomNavigationBarHeight) -
+                          kToolbarHeight,
+                      minWidth: double.infinity),
+                  child: Center(
+                    // Center is a layout widget. It takes a single child and positions it
+                    // in the middle of the parent.
+                    child: Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: Container(
+                        width: double.infinity,
+                        child: Card(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                'Coming soon...',
+                                // style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -144,28 +191,24 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: LayoutBuilder(
-        builder: (BuildContext ctx, BoxConstraints constraints) {
-          BottomNavigationBarType type = (constraints.maxWidth >= 480)
-              ? BottomNavigationBarType.fixed
-              : BottomNavigationBarType.shifting;
-          return BottomNavigationBar(
-            // backgroundColor: Theme.of(context).backgroundColor,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white60,
-            currentIndex: index,
-            showUnselectedLabels: false,
-            onTap: (int) {
-              setState(() {
-                index = int;
-              });
-            },
-            type: type,
-            items: bottomNav,
-          );
-        },
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        bottomNavigationBar: (constraints.maxWidth >= 480)
+            ? null
+            : BottomNavigationBar(
+                elevation: 0,
+                // backgroundColor: Theme.of(context).backgroundColor,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.white60,
+                currentIndex: index,
+                showUnselectedLabels: false,
+                onTap: (int) {
+                  setState(() {
+                    index = int;
+                    _tabController.index = int;
+                  });
+                },
+                items: bottomNav,
+              ),
+      );
+    });
   }
 }
