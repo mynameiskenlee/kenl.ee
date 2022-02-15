@@ -7,6 +7,18 @@ void main() {
   runApp(KenLee());
 }
 
+class DeferredLoader extends QMiddleware {
+  // final Future<dynamic> Function() loader;
+
+  DeferredLoader();
+
+  @override
+  Future onEnter() async {
+    // await loader();
+    return super.onEnter();
+  }
+}
+
 class AppRoutes {
   static String homePage = 'Home Page';
   static String userPage = 'About Page';
@@ -22,6 +34,9 @@ class AppRoutes {
           // style: TextStyle(color: Colors.white),
         ),
       ),
+      middleware: [
+        DeferredLoader(),
+      ],
     ),
     QRoute(
       path: 'about',
@@ -32,6 +47,9 @@ class AppRoutes {
           // style: TextStyle(color: Colors.white),
         ),
       ),
+      middleware: [
+        DeferredLoader(),
+      ],
     ),
     QRoute(
       path: 'photos',
@@ -42,6 +60,9 @@ class AppRoutes {
           // style: TextStyle(color: Colors.white),
         ),
       ),
+      middleware: [
+        DeferredLoader(),
+      ],
     ),
     QRoute(
       path: 'links',
@@ -52,6 +73,9 @@ class AppRoutes {
           // style: TextStyle(color: Colors.white),
         ),
       ),
+      middleware: [
+        DeferredLoader(),
+      ],
     ),
   ];
 }
@@ -60,56 +84,6 @@ class KenLee extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //   return MaterialApp.router(
-    //     routeInformationParser: QRouteInformationParser(),
-    //     routerDelegate: QRouterDelegate(AppRoutes().routes),
-
-    //     theme: ThemeData(
-    //       pageTransitionsTheme: PageTransitionsTheme(builders: {
-    //         TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-    //         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-    //       }),
-    //       useMaterial3: true,
-    //       primaryColor: Color.fromRGBO(128, 184, 239, 1),
-    //       // primaryColorBrightness: Brightness.dark,
-    //       brightness: Brightness.light,
-    //       // primaryColorDark: Colors.black,
-    //       primaryColorLight: Color.fromRGBO(128, 184, 239, 1),
-    //       canvasColor: Colors.white,
-    //       backgroundColor: Color.fromRGBO(128, 184, 239, 1),
-    //       // next line is important!
-    //       appBarTheme: AppBarTheme(
-    //         backgroundColor: Color.fromRGBO(128, 184, 239, 1),
-    //         // brightness: Brightness.dark,
-    //         titleTextStyle: TextStyle(
-    //           color: Colors.white,
-    //         ),
-    //       ),
-    //       navigationBarTheme: NavigationBarThemeData(
-    //         // backgroundColor: Colors.blue,
-    //         iconTheme: MaterialStateProperty.all(
-    //           IconThemeData(
-    //             color: Colors.white,
-    //           ),
-    //         ),
-    //         labelTextStyle: MaterialStateProperty.all(
-    //           TextStyle(
-    //             color: Colors.white,
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //     darkTheme: ThemeData(
-    //       pageTransitionsTheme: PageTransitionsTheme(builders: {
-    //         TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
-    //         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-    //       }),
-    //       useMaterial3: true,
-    //       colorSchemeSeed: Color.fromRGBO(128, 184, 239, 1),
-    //       canvasColor: Colors.black,
-    //       brightness: Brightness.dark,
-    //     ),
-    //   );
     return MaterialApp(
       title: 'Ken Lee',
       theme: ThemeData(
@@ -154,7 +128,7 @@ class KenLee extends StatelessWidget {
         }),
         useMaterial3: true,
         colorSchemeSeed: Color.fromRGBO(128, 184, 239, 1),
-        canvasColor: Colors.black,
+        // canvasColor: Colors.black,
         brightness: Brightness.dark,
       ),
       home: HomePage(),
@@ -308,7 +282,7 @@ class _HomePageState extends State<HomePage>
                                       QRouteInformationParser(),
                                   routerDelegate: QRouterDelegate(
                                       AppRoutes().routes,
-                                      initPath: '/',
+                                      initPath: '/ ',
                                       withWebBar: true),
                                 ),
                               )
