@@ -282,7 +282,7 @@ class _HomePageState extends State<HomePage>
                                       QRouteInformationParser(),
                                   routerDelegate: QRouterDelegate(
                                       AppRoutes().routes,
-                                      initPath: '/ ',
+                                      initPath: '/',
                                       withWebBar: true),
                                 ),
                               )
