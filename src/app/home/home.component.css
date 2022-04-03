@@ -1,0 +1,12 @@
+div{
+    vertical-align: middle;
+    padding: 1em;
+}
+img{
+    pointer-events: none;
+    height: 100%;
+    width: 50%;
+    margin-left: auto;
+    object-fit: cover;
+    object-position: 20% 0%;
+}

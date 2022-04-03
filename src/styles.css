@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp);
+.mat-tooltip.tooltip{
+  font-size: 16px;
+}
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #000; */
+  overflow-y: auto;
+  text-align: center;
+}
+
+.wrapper:before {
+  content: '';
+  height: 100%;
+  /* width: 0; */
+  vertical-align: middle;
+  display: inline-block;
+}
+
+body {
+  display: flex;
+  flex-direction:column; 
+  justify-content:safe center;
+  background-color: rgba(43, 137, 228, .6);
+  color: #ffffff;
+  max-width: 1200px;
+  /* width: 80%; */
+  margin: 0 auto;
+  min-height: -moz-min-content;
+  min-height: -webkit-min-content;
+  min-height: min-content;
+  /* padding: 5vw; */
+}
+.modal {
+  display: inline-block;
+  text-align: left;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  /* background-color: #fff; */
+  /* border-radius: 25px; */
+  vertical-align: middle;
+}
+
+home{
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  width: 100%;
+}
+
+pagenotfound{
+  background-color: #3973aa;
+  color: #fefeff;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
+  width: 100%;
+}
+
+
+nav{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+footer p {
+  text-align: center;
+  color: rgba(255, 255, 255, .6)
+}
+
+* {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Dark theme styles go here */
+  body {
+    background-color: #212121;
+    color: #ffffff;
+  }
+}
+/* html, body { height: 100%; } */
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
