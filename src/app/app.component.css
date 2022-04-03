@@ -1,0 +1,14 @@
+main {
+    background: white;
+    color: black;
+    /* width: 80%; */
+    margin: 3%;
+    border-radius: 25px;
+    /* padding: 1em; */
+    overflow: hidden;
+    height: 90%;
+    min-height: 500px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    display: flex;
+}
