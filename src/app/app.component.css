@@ -12,3 +12,10 @@ main {
     /* justify-content: center; */
     display: flex;
 }
+
+@media (prefers-color-scheme: dark) {
+    main {
+        background: #333;
+        color: white;
+    }
+}

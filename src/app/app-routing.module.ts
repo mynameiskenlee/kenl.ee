@@ -8,9 +8,9 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
   },
-  // {
-  //   path: 'about', component: AboutComponent
-  // },
+  {
+    path: 'about', component: AboutComponent
+  },
   {
     path: '**', pathMatch: 'full',
     component: PagenotfoundComponent

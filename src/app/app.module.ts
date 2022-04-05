@@ -13,6 +13,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ExperienceComponent } from './experience/experience.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FooterComponent,
     NavComponent,
     PagenotfoundComponent,
+    ExperienceComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
