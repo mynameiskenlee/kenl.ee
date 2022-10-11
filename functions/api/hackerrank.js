@@ -21,7 +21,7 @@
    return response.text();
  }
  
- async function handleRequest() {
+ export async function onRequest() {
    const init = {
      headers: {
        'content-type': 'application/json;charset=UTF-8',
@@ -31,8 +31,6 @@
    const results = await gatherResponse(response);
    return new Response(results, init);
  }
- 
- addEventListener('fetch', event => {
-   return event.respondWith(handleRequest());
- });
+  
+  
  
