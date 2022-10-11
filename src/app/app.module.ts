@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ExperienceComponent } from './experience/experience.component';
+import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -26,6 +27,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NavComponent,
     PagenotfoundComponent,
     ExperienceComponent,
+    ProblemSolvingComponent,
   ],
   imports: [
     BrowserModule,

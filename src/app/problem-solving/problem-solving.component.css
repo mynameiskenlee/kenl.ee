@@ -1,0 +1,30 @@
+#propic {
+    min-width: 100px;
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    min-height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 20% 0%;
+    /* padding: 25px 5px 5px 5px; */
+  }
+
+.header{
+    text-align:center;
+}
+
+.main{
+    padding: 1em;
+}
+
+.social-links{
+    font-size: 30px;
+}
+
+fa-icon{
+    cursor: pointer;
+}
