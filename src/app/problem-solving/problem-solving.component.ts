@@ -16,7 +16,7 @@ export class ProblemSolvingComponent implements OnInit {
   data: any; 
 
   ngOnInit(): void {
-    this.http.get('https://www.hackerrank.com/rest/hackers/_kltk/recent_challenges',
+    this.http.get('https://www.hackerrank.com/rest/hackers/_kltk/recent_challenges/',
     { params: new HttpParams()
         .set('response_version', 'v2')
         .set('limit', 1000) })

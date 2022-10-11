@@ -16,6 +16,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
