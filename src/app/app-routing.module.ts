@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
-import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
+// import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
@@ -11,9 +11,6 @@ const routes: Routes = [
   },
   {
     path: 'about', component: AboutComponent
-  },
-  {
-    path: 'problem-solving', component: ProblemSolvingComponent
   },
   {
     path: '**', pathMatch: 'full',
