@@ -33,3 +33,6 @@ svg{
     cursor: pointer;
     size: 30px;
 }
+path{
+    fill: currentColor;
+}
