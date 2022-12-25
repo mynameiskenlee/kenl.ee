@@ -17,6 +17,7 @@ import { ExperienceComponent } from './experience/experience.component';
 import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 
 @NgModule({
@@ -39,8 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatTooltipModule,
     FontAwesomeModule,
+    IconModule,
   ],
-  providers: [],
+  providers: [IconSetService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

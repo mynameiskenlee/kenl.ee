@@ -28,3 +28,27 @@
 fa-icon{
     cursor: pointer;
 }
+
+svg{
+    cursor: pointer;
+    size: 30px;
+}
+.icon{
+    cursor: pointer;
+    size: 30px;
+    fill: black;
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    main {
+        background: #333;
+        color: white;
+    }
+    .icon{
+        cursor: pointer;
+        size: 30px;
+        fill: white;
+        color: white;
+    }
+}
