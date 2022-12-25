@@ -19,6 +19,6 @@ main {
         color: white;
     }
     svg{
-        color: white
+        fill: currentColor;
     }
 }
