@@ -36,9 +36,19 @@ svg{
 .icon{
     cursor: pointer;
     size: 30px;
-    fill: currentColor;
-    color: currentColor;
+    fill: black;
+    color: black;
 }
-path{
-    fill: currentColor;
+
+@media (prefers-color-scheme: dark) {
+    main {
+        background: #333;
+        color: white;
+    }
+    .icon{
+        cursor: pointer;
+        size: 30px;
+        fill: white;
+        color: white;
+    }
 }
