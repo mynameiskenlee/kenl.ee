@@ -28,3 +28,8 @@
 fa-icon{
     cursor: pointer;
 }
+
+svg{
+    cursor: pointer;
+    size: 30px;
+}
