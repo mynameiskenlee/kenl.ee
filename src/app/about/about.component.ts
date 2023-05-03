@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faGithubSquare, faLinkedin, faHackerrank, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faGithubSquare, faLinkedin, faHackerrank, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
 import { cibLeetcode} from '@coreui/icons';
 
 @Component({
@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
   faLinkedin = faLinkedin;
   faHackerrank = faHackerrank;
   cibLeetcode = cibLeetcode;
-  faInstagram = faInstagram;
+  faInstagramSquare = faInstagramSquare;
   constructor() { }
 
   ngOnInit(): void {
