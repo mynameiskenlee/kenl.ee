@@ -21,12 +21,7 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    FooterComponent,
-    PagenotfoundComponent,
-    ExperienceComponent,
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,8 +33,12 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
     FontAwesomeModule,
     IconModule,
     AppComponent,
-    AboutComponent,
     NavComponent,
+    FooterComponent,
+    HomeComponent,
+    AboutComponent,
+    PagenotfoundComponent,
+    ExperienceComponent,
     ProblemSolvingComponent,
   ],
   providers: [IconSetService,],
