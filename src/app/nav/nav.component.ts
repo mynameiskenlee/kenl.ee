@@ -5,8 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
-  imports: [RouterModule, MatIconModule]
+  styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
 
