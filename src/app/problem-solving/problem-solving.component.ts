@@ -1,11 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-problem-solving',
   templateUrl: './problem-solving.component.html',
-  styleUrls: ['./problem-solving.component.css']
+  styleUrls: ['./problem-solving.component.css'],
+  imports: [FontAwesomeModule]
 })
 export class ProblemSolvingComponent implements OnInit {
   faGithubSquare = faGithubSquare;

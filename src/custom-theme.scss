@@ -1,37 +1,16 @@
+/*
+// Experimental direct import
+@use '~@angular/material/index' as mat;
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+// Test with a very simple palette definition
+$test-primary: mat.define-palette(mat.$indigo-palette, 500);
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-// @include mat.all-component-themes($kenlee-theme);
+// Try to output something simple to see if this part compiles
+body {
+  background-color: mat.get-color-from-palette($test-primary, 500);
+}
+*/
 
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$kenlee-primary: mat.define-palette(mat.$indigo-palette);
-$kenlee-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$kenlee-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$kenlee-theme: mat.define-light-theme((
-  color: (
-    primary: $kenlee-primary,
-    accent: $kenlee-accent,
-    warn: $kenlee-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($kenlee-theme);
-
+body {
+  background-color: #f0f0f0; /* Simple fallback for neutralized theme */
+}
