@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
+import { IconModule } from '@coreui/icons-angular';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -8,7 +10,7 @@ describe('AboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      imports: [ AboutComponent, IconModule, FontAwesomeModule ]
     })
     .compileComponents();
   });

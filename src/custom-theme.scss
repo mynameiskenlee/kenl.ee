@@ -1,16 +1,37 @@
-/*
-// Experimental direct import
-@use '~@angular/material/index' as mat;
+@use '@angular/material' as mat;
 
-// Test with a very simple palette definition
-$test-primary: mat.define-palette(mat.$indigo-palette, 500);
+// Call mat.core() once to enable all core styles.
+@include mat.core();
 
-// Try to output something simple to see if this part compiles
-body {
-  background-color: mat.get-color-from-palette($test-primary, 500);
-}
-*/
+// Define custom palettes
+$kenlee-primary-palette: mat.define-palette(mat.$indigo-palette, 500);
+$kenlee-accent-palette: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$kenlee-warn-palette: mat.define-palette(mat.$red-palette);
 
-body {
-  background-color: #f0f0f0; /* Simple fallback for neutralized theme */
-}
+// Define the light theme.
+$kenlee-light-theme: mat.define-light-theme((
+  color: (
+    primary: $kenlee-primary-palette,
+    accent: $kenlee-accent-palette,
+    warn: $kenlee-warn-palette,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0, // Default density
+));
+
+// Define the dark theme (optional, but good for completeness).
+// $kenlee-dark-theme: mat.define-dark-theme((
+//   color: (
+//     primary: $kenlee-primary-palette,
+//     accent: $kenlee-accent-palette,
+//     warn: $kenlee-warn-palette,
+//   )
+// ));
+
+// Apply the light theme by default.
+@include mat.all-component-themes($kenlee-light-theme);
+
+// Example for applying dark theme under a class:
+// .dark-theme {
+//   @include mat.all-component-colors($kenlee-dark-theme);
+// }
