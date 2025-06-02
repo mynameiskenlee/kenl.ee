@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-problem-solving',
+  standalone: true,
   templateUrl: './problem-solving.component.html',
   styleUrls: ['./problem-solving.component.css'],
   imports: [FontAwesomeModule]

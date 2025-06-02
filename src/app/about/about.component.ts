@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-about',
+  standalone: true,
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
   imports: [IconModule, FontAwesomeModule]
