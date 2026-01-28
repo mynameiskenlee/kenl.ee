@@ -17,10 +17,11 @@ import { ExperienceComponent } from './experience/experience.component';
 import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { IconModule, IconSetService } from '@coreui/icons-angular';
+// import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
@@ -37,5 +38,6 @@ import { IconModule, IconSetService } from '@coreui/icons-angular';
         MatButtonModule,
         MatTooltipModule,
         FontAwesomeModule,
-        IconModule], providers: [IconSetService, provideHttpClient(withInterceptorsFromDi()),] })
+    ], providers: [provideHttpClient(withInterceptorsFromDi()),]
+})
 export class AppModule { }
