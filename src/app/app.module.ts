@@ -10,8 +10,8 @@ import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
