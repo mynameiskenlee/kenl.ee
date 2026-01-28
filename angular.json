@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "kenl.ee:build:production"
+              "buildTarget": "kenl.ee:build:production"
             },
             "development": {
-              "browserTarget": "kenl.ee:build:development"
+              "buildTarget": "kenl.ee:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kenl.ee:build"
+            "buildTarget": "kenl.ee:build"
           }
         },
         "test": {
