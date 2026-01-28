@@ -16,33 +16,26 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { ProblemSolvingComponent } from './problem-solving/problem-solving.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    FooterComponent,
-    NavComponent,
-    PagenotfoundComponent,
-    ExperienceComponent,
-    ProblemSolvingComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    FontAwesomeModule,
-    IconModule,
-  ],
-  providers: [IconSetService,],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        AboutComponent,
+        FooterComponent,
+        NavComponent,
+        PagenotfoundComponent,
+        ExperienceComponent,
+        ProblemSolvingComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        FontAwesomeModule,
+        IconModule], providers: [IconSetService, provideHttpClient(withInterceptorsFromDi()),] })
 export class AppModule { }
