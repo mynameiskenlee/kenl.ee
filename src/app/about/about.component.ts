@@ -3,9 +3,10 @@ import { faGithubSquare, faLinkedin, faHackerrank, faInstagramSquare } from '@fo
 import { cibLeetcode} from '@coreui/icons';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.css'],
+    standalone: false
 })
 export class AboutComponent implements OnInit {
   faGithubSquare = faGithubSquare;

@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { faGithubSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
-  selector: 'app-problem-solving',
-  templateUrl: './problem-solving.component.html',
-  styleUrls: ['./problem-solving.component.css']
+    selector: 'app-problem-solving',
+    templateUrl: './problem-solving.component.html',
+    styleUrls: ['./problem-solving.component.css'],
+    standalone: false
 })
 export class ProblemSolvingComponent implements OnInit {
   faGithubSquare = faGithubSquare;
