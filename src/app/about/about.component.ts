@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faGithubSquare, faLinkedin, faHackerrank, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
-// import { cibLeetcode} from '@coreui/icons';
+import { cibLeetcode } from '@coreui/icons';
 
 @Component({
   selector: 'app-about',
@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
   faGithubSquare = faGithubSquare;
   faLinkedin = faLinkedin;
   faHackerrank = faHackerrank;
-  // cibLeetcode = cibLeetcode;
+  cibLeetcode = cibLeetcode;
   faInstagramSquare = faInstagramSquare;
   constructor() { }
 
