@@ -5,16 +5,21 @@
         <div class="timeline-item" *ngFor="let exp of experiences">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-                <div class="experience-header">
+                <div class="experience-header item-header" (click)="toggleItem(exp)">
                     <div class="title-company">
                         <h2 class="title">{{ exp.title }}</h2>
                         <h3 class="company">{{ exp.company }} <span class="location">· {{ exp.location }}</span></h3>
                     </div>
-                    <div class="period">{{ exp.period }}</div>
+                    <div class="period-container">
+                        <div class="period">{{ exp.period }}</div>
+                        <mat-icon class="item-toggle-icon">{{ exp.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </div>
                 </div>
-                <ul class="descriptions">
-                    <li *ngFor="let desc of exp.descriptions">{{ desc }}</li>
-                </ul>
+                <div class="descriptions-wrapper" *ngIf="exp.expanded">
+                    <ul class="descriptions">
+                        <li *ngFor="let desc of exp.descriptions">{{ desc }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -25,17 +30,22 @@
         <div class="timeline-item" *ngFor="let edu of educations">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
-                <div class="experience-header">
+                <div class="experience-header item-header" (click)="toggleItem(edu)">
                     <div class="title-company">
                         <h2 class="title">{{ edu.degree }}</h2>
                         <h3 class="company">{{ edu.institution }} <span class="location">· {{ edu.location }}</span>
                         </h3>
                     </div>
-                    <div class="period">{{ edu.period }}</div>
+                    <div class="period-container">
+                        <div class="period">{{ edu.period }}</div>
+                        <mat-icon class="item-toggle-icon">{{ edu.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+                    </div>
                 </div>
-                <ul class="descriptions">
-                    <li *ngFor="let desc of edu.descriptions">{{ desc }}</li>
-                </ul>
+                <div class="descriptions-wrapper" *ngIf="edu.expanded">
+                    <ul class="descriptions">
+                        <li *ngFor="let desc of edu.descriptions">{{ desc }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -46,19 +56,26 @@
         <div class="timeline-item timeline-project" *ngFor="let proj of projects">
             <div class="timeline-dot"></div>
             <div class="timeline-content project-content">
-                <div class="experience-header">
+                <div class="experience-header item-header" (click)="toggleItem(proj)">
                     <div class="title-company">
-                        <a [href]="proj.link" target="_blank" rel="noopener noreferrer" class="title project-title">
+                        <a [href]="proj.link" target="_blank" rel="noopener noreferrer" class="title project-title"
+                            (click)="$event.stopPropagation()">
                             {{ proj.title }}
                             <mat-icon class="external-link-icon">open_in_new</mat-icon>
                         </a>
                         <h3 class="company tech-stack">{{ proj.technologies }}</h3>
                     </div>
-                    <div class="period">{{ proj.period }}</div>
+                    <div class="period-container">
+                        <div class="period">{{ proj.period }}</div>
+                        <mat-icon class="item-toggle-icon">{{ proj.expanded ? 'expand_less' : 'expand_more'
+                            }}</mat-icon>
+                    </div>
                 </div>
-                <ul class="descriptions">
-                    <li *ngFor="let desc of proj.descriptions">{{ desc }}</li>
-                </ul>
+                <div class="descriptions-wrapper" *ngIf="proj.expanded">
+                    <ul class="descriptions">
+                        <li *ngFor="let desc of proj.descriptions">{{ desc }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

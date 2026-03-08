@@ -6,6 +6,7 @@ interface Experience {
   title: string;
   period: string;
   descriptions: string[];
+  expanded?: boolean;
 }
 
 interface Education {
@@ -14,6 +15,7 @@ interface Education {
   location: string;
   period: string;
   descriptions: string[];
+  expanded?: boolean;
 }
 
 interface Project {
@@ -22,6 +24,7 @@ interface Project {
   technologies: string;
   period: string;
   descriptions: string[];
+  expanded?: boolean;
 }
 
 @Component({
@@ -136,6 +139,10 @@ export class ExperienceComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleItem(item: any): void {
+    item.expanded = !item.expanded;
   }
 
 }
