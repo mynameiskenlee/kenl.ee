@@ -1,1 +1,66 @@
-<p>experience works!</p>
+<div class="experience-container">
+    <h1>Work Experience</h1>
+
+    <div class="timeline">
+        <div class="timeline-item" *ngFor="let exp of experiences">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="experience-header">
+                    <div class="title-company">
+                        <h2 class="title">{{ exp.title }}</h2>
+                        <h3 class="company">{{ exp.company }} <span class="location">· {{ exp.location }}</span></h3>
+                    </div>
+                    <div class="period">{{ exp.period }}</div>
+                </div>
+                <ul class="descriptions">
+                    <li *ngFor="let desc of exp.descriptions">{{ desc }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="section-divider">Education</h1>
+
+    <div class="timeline">
+        <div class="timeline-item" *ngFor="let edu of educations">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+                <div class="experience-header">
+                    <div class="title-company">
+                        <h2 class="title">{{ edu.degree }}</h2>
+                        <h3 class="company">{{ edu.institution }} <span class="location">· {{ edu.location }}</span>
+                        </h3>
+                    </div>
+                    <div class="period">{{ edu.period }}</div>
+                </div>
+                <ul class="descriptions">
+                    <li *ngFor="let desc of edu.descriptions">{{ desc }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="section-divider">Projects</h1>
+
+    <div class="timeline">
+        <div class="timeline-item timeline-project" *ngFor="let proj of projects">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content project-content">
+                <div class="experience-header">
+                    <div class="title-company">
+                        <a [href]="proj.link" target="_blank" rel="noopener noreferrer" class="title project-title">
+                            {{ proj.title }}
+                            <mat-icon class="external-link-icon">open_in_new</mat-icon>
+                        </a>
+                        <h3 class="company tech-stack">{{ proj.technologies }}</h3>
+                    </div>
+                    <div class="period">{{ proj.period }}</div>
+                </div>
+                <ul class="descriptions">
+                    <li *ngFor="let desc of proj.descriptions">{{ desc }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
