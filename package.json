@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "lhci": "lhci autorun",
     "test": "ng test"
   },
   "private": true,
@@ -35,6 +36,7 @@
     "@angular/build": "^21.1.3",
     "@angular/cli": "^21.1.4",
     "@angular/compiler-cli": "^21.1.1",
+    "@lhci/cli": "^0.15.1",
     "@types/jasmine": "~6.0.0",
     "@types/node": "^25.3.0",
     "jasmine-core": "~6.1.0",
