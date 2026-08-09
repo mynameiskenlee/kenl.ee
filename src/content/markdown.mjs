@@ -5,6 +5,7 @@
  * negotiating `Accept: text/markdown`. Kept free of any Node or Angular
  * dependency so it runs unchanged on the Cloudflare Workers runtime.
  */
+import { PATHS, openApiDocument } from './api.mjs';
 
 const bullets = (lines) => lines.map((line) => `- ${line}`).join('\n');
 
@@ -76,10 +77,53 @@ ${built.join('\n\n')}
 `;
 }
 
+/**
+ * Markdown twin of the HTML page served by functions/api/docs.js. Both are
+ * rendered from the OpenAPI document, so neither can describe an endpoint the
+ * machine-readable description does not have.
+ */
+function apiDocsPage({ site }) {
+  const document = openApiDocument(site.url);
+
+  const endpoints = Object.entries(document.paths).map(([path, item]) => {
+    const responses = Object.entries(item.get.responses).map(
+      ([status, response]) => `\`${status}\` — ${response.description}`
+    );
+
+    return `### GET ${path}
+
+${item.get.description}
+
+${bullets(responses)}
+
+\`\`\`
+curl ${site.url}${path}
+\`\`\``;
+  });
+
+  return `# ${document.info.title}
+
+${document.info.description}
+
+## Discovery
+
+- [\`${PATHS.catalog}\`](${site.url}${PATHS.catalog}) — RFC 9727 catalog
+- [\`${PATHS.openapi}\`](${site.url}${PATHS.openapi}) — OpenAPI ${document.openapi} description
+- [\`${PATHS.health}\`](${site.url}${PATHS.health}) — status
+
+Every endpoint is unauthenticated, read-only and answers \`GET\` and \`HEAD\`. Responses carry \`Access-Control-Allow-Origin: *\`.
+
+## Endpoints
+
+${endpoints.join('\n\n')}
+`;
+}
+
 const RENDERERS = {
   '/': homePage,
   '/about': aboutPage,
   '/experience': experiencePage,
+  [PATHS.docs]: apiDocsPage,
 };
 
 /** Returns a `route -> markdown` map for every page with a markdown form. */

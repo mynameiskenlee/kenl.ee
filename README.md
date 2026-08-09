@@ -24,6 +24,24 @@ curl -H 'Accept: text/markdown' https://kenl.ee/experience
 
 When adding a route, add it to `src/app/app-routing.module.ts`, `src/sitemap.xml` and the `RENDERERS` map in `src/content/markdown.mjs`.
 
+## API catalog
+
+The site publishes an [RFC 9727](https://www.rfc-editor.org/rfc/rfc9727) catalog so agents can discover its API without being told where it is:
+
+```
+curl https://kenl.ee/.well-known/api-catalog
+```
+
+The catalog is a `application/linkset+json` document with one entry per API, each anchored at the API's entry point and pointing at three resources:
+
+| Relation       | Route                | Served by                      |
+| -------------- | -------------------- | ------------------------------ |
+| `service-desc` | `/api/openapi.json`  | `functions/api/openapi.json.js` |
+| `service-doc`  | `/api/docs`          | `functions/api/docs.js`         |
+| `status`       | `/api/health`        | `functions/api/health.js`       |
+
+All four are rendered from `src/content/api.mjs`, which holds the API list and the OpenAPI 3.1 document. Adding an endpoint means editing that one file: the catalog, the description, the HTML docs page and its markdown twin in `src/content/markdown.mjs` all follow.
+
 To exercise the Function locally, build first and then serve the output through the Pages runtime:
 
 ```
