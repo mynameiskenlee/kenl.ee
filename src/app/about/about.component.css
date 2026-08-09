@@ -25,6 +25,12 @@
     font-size: 30px;
 }
 
+.social-links a{
+    color: inherit;
+    text-decoration: none;
+    margin: 0 0.15em;
+}
+
 fa-icon{
     cursor: pointer;
 }

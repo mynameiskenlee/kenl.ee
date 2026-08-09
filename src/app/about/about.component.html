@@ -1,22 +1,20 @@
 <div class="header">
     <img src="assets/cover.webp" onerror="this.onerror=null; this.src='assets/cover.png'" alt="Photo of me"
         id="propic" />
-    <h1>Ken Lee</h1>
-    <h3>Software Engineer &amp; Digital Consultant</h3>
+    <h1>{{ name }}</h1>
+    <h3>{{ role }}</h3>
 
-    <h3>Generative AI &amp; Agentic RAG, Cloud (GCP / Azure / AWS), Flutter, Data Science</h3>
+    <h3>{{ focus }}</h3>
     <div class="social-links">
-        <fa-icon [icon]="faGithubSquare" onclick="location.href = 'http\://github.com/mynameiskenlee'"></fa-icon>
-        &nbsp;
-        <fa-icon [icon]="faLinkedin" onclick="location.href = 'https\://linkedin.com/in/kltk'"></fa-icon>
-        &nbsp;
-        <a href="https://leetcode.com/mynameiskenlee"><svg [cIcon]="cibLeetcode" height="28px" width="28px"></svg></a>
-        &nbsp;
-        <fa-icon [icon]="faHackerrank" onclick="location.href = 'https\://www.hackerrank.com/_kltk'"></fa-icon>
-        &nbsp;
-        <fa-icon [icon]="faInstagramSquare" onclick="location.href = 'https\://www.instagram.com/_.tklc'"></fa-icon>
+        @for (link of socials; track link.url) {
+        <a [href]="link.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="link.label">
+            @if (link.faIcon) {
+            <fa-icon [icon]="link.faIcon"></fa-icon>
+            }
+            @if (link.ciIcon) {
+            <svg [cIcon]="link.ciIcon" height="28px" width="28px"></svg>
+            }
+        </a>
+        }
     </div>
 </div>
-<!-- <div class="main">
-    <p>Ken</p>
-</div> -->

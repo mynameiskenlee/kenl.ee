@@ -12,7 +12,18 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This runs `ng build` followed by `scripts/generate-markdown.mjs`, so use it rather than a bare `ng build` for anything that will be deployed.
+
+## Markdown for agents
+
+Page content lives in `src/content/site.json` and is consumed twice: by the Angular components, and by `scripts/generate-markdown.mjs`, which emits `index.md`, `about.md` and `experience.md` into the build output. `functions/_middleware.js` serves those files with `Content-Type: text/markdown` when a request negotiates `Accept: text/markdown`, and serves the usual HTML otherwise.
+
+```
+curl -H 'Accept: text/markdown' https://kenl.ee/experience
+```
+
+When adding a route, add it to `src/app/app-routing.module.ts`, `src/sitemap.xml`, the `PAGES` map in the generator and the `MARKDOWN_ROUTES` map in the middleware.
 
 ## Running unit tests
 

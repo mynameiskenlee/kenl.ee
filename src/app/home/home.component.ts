@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import content from '../../content/site.json';
 
 @Component({
     selector: 'home',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
     standalone: false
 })
 export class HomeComponent implements OnInit {
+  name = content.site.name;
+  tagline = content.site.tagline;
 
   constructor() { }
 
