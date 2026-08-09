@@ -153,18 +153,39 @@ export function methodNotAllowed(method) {
   return new Response(null, { status: 405, headers: { allow: 'GET, HEAD' } });
 }
 
-/** A JSON response with the CORS and caching headers every API route shares. */
-export function jsonResponse(body, { method = 'GET', contentType = 'application/json', maxAge = 3600 } = {}) {
+/**
+ * A JSON response with the CORS and caching headers every API route shares.
+ * `maxAge: 0` means the response must not be stored at all, which is what an
+ * error representation wants: the next caller should reach the origin again.
+ */
+export function jsonResponse(
+  body,
+  { method = 'GET', status = 200, contentType = 'application/json', maxAge = 3600 } = {}
+) {
   const serialised = `${JSON.stringify(body, null, 2)}\n`;
 
   return new Response(method === 'HEAD' ? null : serialised, {
+    status,
     headers: {
       'content-type': contentType,
       'content-length': String(new TextEncoder().encode(serialised).length),
       'access-control-allow-origin': '*',
-      'cache-control': `public, max-age=${maxAge}`,
+      'cache-control': maxAge === 0 ? 'no-store' : `public, max-age=${maxAge}`,
     },
   });
+}
+
+/**
+ * An RFC 9457 problem document, shaped like the `Problem` schema the OpenAPI
+ * description names. `type` stays `about:blank` because this site publishes no
+ * problem-type registry; RFC 9457 §4.2.1 then asks that `title` be the status
+ * phrase, leaving `detail` to say what actually went wrong.
+ */
+export function problemResponse({ method = 'GET', status, title, detail }) {
+  return jsonResponse(
+    { type: 'about:blank', title, status, detail },
+    { method, status, contentType: 'application/problem+json', maxAge: 0 }
+  );
 }
 
 /**
