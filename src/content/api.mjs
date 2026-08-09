@@ -19,6 +19,24 @@ export const PATHS = {
 };
 
 /**
+ * The `Link` header every page carries, so an agent that fetches any one of
+ * them discovers the API from the response head alone, without retrieving the
+ * catalog first or parsing the body. RFC 9727 §3 asks that the catalog be
+ * advertised this way; RFC 8631 defines `service-desc` and `service-doc`, and
+ * names a service's home resource as a place such links belong.
+ *
+ * The targets are relative references, which RFC 8288 §3 resolves against the
+ * request URI, so the header reads the same on kenl.ee and on a preview deploy.
+ *
+ * https://www.rfc-editor.org/rfc/rfc8288
+ */
+export const DISCOVERY_LINK = [
+  `<${PATHS.catalog}>; rel="api-catalog"; type="application/linkset+json"`,
+  `<${PATHS.openapi}>; rel="service-desc"; type="application/openapi+json"`,
+  `<${PATHS.docs}>; rel="service-doc"; type="text/html"`,
+].join(', ');
+
+/**
  * Every API this site publishes. Each entry becomes one linkset member in the
  * catalog and one path in the OpenAPI description.
  */

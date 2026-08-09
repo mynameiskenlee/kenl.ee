@@ -10,6 +10,7 @@
  * https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/
  */
 import content from '../src/content/site.json';
+import { DISCOVERY_LINK } from '../src/content/api.mjs';
 import { renderPages } from '../src/content/markdown.mjs';
 
 /** Public route -> markdown body. */
@@ -60,6 +61,7 @@ function markdownResponse(body, { status = 200, method = 'GET' } = {}) {
       'content-type': 'text/markdown; charset=utf-8',
       'content-length': String(new TextEncoder().encode(body).length),
       'x-markdown-tokens': String(estimateTokens(body)),
+      link: DISCOVERY_LINK,
       vary: 'Accept',
       // Cloudflare's edge cache keys on URL and does not honour `Vary: Accept`,
       // so markdown must not be cached at a URL that also serves HTML.
@@ -68,13 +70,19 @@ function markdownResponse(body, { status = 200, method = 'GET' } = {}) {
   });
 }
 
-/** Adds `Accept` to Vary so shared caches keep the two representations apart. */
+/**
+ * Adds `Accept` to Vary so shared caches keep the two representations apart,
+ * and the discovery links to the head of the page. Appending rather than
+ * setting leaves any `Link` the static asset already carries in place; RFC 8288
+ * §3 reads repeated field lines as one list.
+ */
 async function htmlResponse(next) {
   const response = await next();
   const varied = new Response(response.body, response);
   const existing = varied.headers.get('vary');
 
   varied.headers.set('vary', existing && !/\baccept\b/i.test(existing) ? `${existing}, Accept` : existing ?? 'Accept');
+  varied.headers.append('link', DISCOVERY_LINK);
 
   return varied;
 }

@@ -42,6 +42,14 @@ The catalog is a `application/linkset+json` document with one entry per API, eac
 
 All four are rendered from `src/content/api.mjs`, which holds the API list and the OpenAPI 3.1 document. Adding an endpoint means editing that one file: the catalog, the description, the HTML docs page and its markdown twin in `src/content/markdown.mjs` all follow.
 
+Every page also advertises the catalog in its response head, per [RFC 9727 §3](https://www.rfc-editor.org/rfc/rfc9727#section-3), so an agent finds the API without fetching a body first:
+
+```
+curl -sI https://kenl.ee | grep -i '^link:'
+```
+
+`functions/_middleware.js` attaches `DISCOVERY_LINK` from `src/content/api.mjs` to both the HTML and the markdown representation of each page. The targets are relative references, which [RFC 8288 §3](https://www.rfc-editor.org/rfc/rfc8288#section-3) resolves against the request URI, so the header is identical on `kenl.ee` and on a preview deploy.
+
 To exercise the Function locally, build first and then serve the output through the Pages runtime:
 
 ```
