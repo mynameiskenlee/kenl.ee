@@ -1,19 +1,19 @@
 /**
  * Markdown content negotiation.
  *
- * Requests that accept `text/markdown` get the pre-rendered markdown
- * representation of the page (built by scripts/generate-markdown.mjs);
- * everything else gets the regular HTML app.
+ * Requests that accept `text/markdown` get a markdown representation of the
+ * page; everything else gets the regular HTML app. The markdown is rendered
+ * from the same src/content/site.json the Angular components read, at module
+ * load rather than per request, so it cannot drift from the site and does not
+ * depend on the build command running an extra step.
  *
  * https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/
  */
+import content from '../src/content/site.json';
+import { renderPages } from '../src/content/markdown.mjs';
 
-/** Public route -> markdown asset emitted into the build output. */
-const MARKDOWN_ROUTES = new Map([
-  ['/', '/index.md'],
-  ['/about', '/about.md'],
-  ['/experience', '/experience.md'],
-]);
+/** Public route -> markdown body. */
+const MARKDOWN_ROUTES = renderPages(content);
 
 const NOT_FOUND = `# 404 — Page not found
 
@@ -80,30 +80,18 @@ async function htmlResponse(next) {
 }
 
 export async function onRequest(context) {
-  const { request, env, next } = context;
+  const { request, next } = context;
 
   if (request.method !== 'GET' && request.method !== 'HEAD') return next();
 
-  const url = new URL(request.url);
-  const pathname = normalise(url.pathname);
-  const markdownPath = MARKDOWN_ROUTES.get(pathname);
+  const pathname = normalise(new URL(request.url).pathname);
+  const markdown = MARKDOWN_ROUTES.get(pathname);
 
   if (!acceptsMarkdown(request.headers.get('accept'))) {
-    return markdownPath ? htmlResponse(next) : next();
+    return markdown ? htmlResponse(next) : next();
   }
 
-  if (markdownPath) {
-    const assetRequest = new Request(new URL(markdownPath, url), { headers: { accept: 'text/plain' } });
-    const asset = env.ASSETS ? await env.ASSETS.fetch(assetRequest) : await next(assetRequest);
-    const body = asset.ok ? await asset.text() : '';
-
-    // A missing .md falls through to the SPA shell; serve HTML rather than that.
-    if (body && !body.trimStart().startsWith('<')) {
-      return markdownResponse(body, { method: request.method });
-    }
-
-    return htmlResponse(next);
-  }
+  if (markdown) return markdownResponse(markdown, { method: request.method });
 
   // Anything else — hashed bundles, images, /api routes — is served as-is.
   // Only the HTML shell that Pages falls back to for unknown routes, which has
