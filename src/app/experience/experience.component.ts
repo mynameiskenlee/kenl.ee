@@ -40,15 +40,14 @@ export class ExperienceComponent implements OnInit {
       company: 'Deloitte Digital',
       location: 'Hong Kong',
       title: 'Consultant',
-      period: 'Jul 2022 - Current',
+      period: 'Jul 2022 - Jul 2026',
       descriptions: [
         'A core member of the Technology & Transformation - Customer - Sales & Service Team, specializing in cutting-edge technology solutions.',
-        'Drove end-to-end Flutter application development for both luxury retail and charity clients, delivering robust and user-centric mobile experiences.',
-        'Engineered advanced Gen-AI solutions, including a Compliance Checking Tool and Stock Index Construction Tool, leveraging AI/ML techniques for a Major Stock Exchange with Google Gemini and Google AI.',
-        'Applied expertise in prompt engineering to fine-tune and optimize large language models (LLMs) for diverse Gen-AI applications.',
-        'Developed and integrated APIs for Gen-AI projects (GPT and Gemini) and contributed to innovative metaverse initiatives, demonstrating strong proficiency in API design and development.',
-        'Managed the migration of a critical Customer Data Platform (CDP) from AWS to GCP, showcasing cloud platform migration expertise.',
-        'Ensured software reliability and performance through rigorous software testing across multiple projects.'
+        'Built two Gen-AI tools for a major stock exchange: a compliance-checking tool on Vertex AI Gemini validating listing and ESG disclosures against regulatory rules with page-level evidence, and an index-construction tool on the Google Agent Development Kit — a multi-agent pipeline (market research → issuer screening → scoring) shipped as a FastAPI + Flutter Web app on Cloud Run.',
+        'Engineered an enterprise agentic RAG assistant over a multinational life insurer\'s product library — FastAPI microservices on Azure OpenAI, AI Search and Cosmos DB with hybrid vector, keyword and graph retrieval, reranking and citation grounding — owning the LLM metadata-extraction pipeline (bilingual prompts, async rate-limit control, rule-based fallback) and channel-aware retrieval prioritisation.',
+        'Built that platform\'s RAG evaluation harness, automating regression across 500+ UAT questions with citation-accuracy and answer-similarity scoring, and tuned answer, citation and metadata prompts across GPT and Gemini deployments.',
+        'Delivered three production Flutter apps — a loyalty app for a global luxury jewellery retailer (lead developer, ~75% of the codebase), a safety app for a statutory construction-industry body (top contributor, 856 commits), and a youth-development app for a major charitable trust — featuring an OpenCV-backed document-scanner plugin with OCR and Apple/Google Wallet pass issuance.',
+        'Hardened and automated mobile delivery with Okta OIDC SSO, encrypted token storage and GitHub Actions CI/CD (Semgrep SAST, signed multi-environment builds), sustaining 170+ releases; also migrated a critical Customer Data Platform from AWS to GCP.'
       ]
     },
     {
@@ -75,15 +74,15 @@ export class ExperienceComponent implements OnInit {
 
   educations: Education[] = [
     {
-      degree: 'Bachelor of Science with Honours, Second Class Upper Division in Computer Science',
+      degree: 'Bachelor of Science with Honours, Second Class Upper Division in Computer Science, Minor in Data Analytics and Informatics, Information Engineering',
       institution: 'The Chinese University of Hong Kong',
       location: 'Hong Kong',
       period: 'Sep 2018 - Jul 2021',
       descriptions: [
-        'Awarded the Faculty of Engineering Admission Scholarship for excellent entrance grades, demonstrating strong academic potential.',
-        'Core Technical Strengths: Excelled in Python, Data Science, AI, Software Engineering, Mobile Computing, Big Data Systems, and Cyber Security with consistently high grades (primarily A and A-).',
-        'Interdisciplinary Focus: Broadened skills through courses in Integrated Marketing Communications (B+) and Creative and New Media (B+), showcasing versatile understanding.',
-        'Cumulative GPA of 3.016/4.000 and a Major GPA of 3.144/4.000'
+        'Awarded the Faculty of Engineering Admission Scholarship for excellent entrance grades.',
+        'Core Strengths: Excelled in Python, Data Science, AI, Software Engineering, Mobile Computing, Big Data, and Cyber Security (mostly A and A- grades).',
+        'Versatile Learning: Also completed courses in Integrated Marketing Communications (B+) and Creative and New Media (B+).',
+        'Achieved a Cumulative GPA of 3.016/4.000 and a Major GPA of 3.144/4.000'
       ]
     },
     {
@@ -93,8 +92,8 @@ export class ExperienceComponent implements OnInit {
       period: 'Sep 2016 - Jun 2018',
       descriptions: [
         'Graduated with Distinction (Award GPA: 3.64)',
-        'Core Competencies: Developed strong foundations in Network Fundamentals, Operating Systems, Programming, Database Principles, and Web Technologies.',
-        'Software Development Expertise: Gained proficiency in Data Structures & Algorithms, Object-Oriented Technology, Mobile Systems Programming, and System Development.'
+        'Core Subjects: Strong foundations in Network Fundamentals, Operating Systems, Programming, Database Principles, and Web Technologies (all \'A\' grades).',
+        'Development Skills: Focused on Data Structures, Algorithms, Object-Oriented Technology, and Mobile Systems.'
       ]
     }
   ];
@@ -109,7 +108,8 @@ export class ExperienceComponent implements OnInit {
         'Achieved 100+ stars on GitHub, demonstrating significant community interest and adoption for a pioneering Flutter template.',
         'Engineered a solution that provides unofficial support for building macOS menubar applications using Google\'s Flutter and Apple\'s AppKit.',
         'Successfully modified core Swift Flutter entry code and integrated a status bar controller, enabling Flutter applications to function seamlessly within the macOS menubar.',
-        'Pioneered a new development pathway for macOS utility applications with Flutter, enhancing cross-platform extensibility for future applications.'
+        'Pioneered a new development pathway for macOS utility applications with Flutter, enhancing cross-platform extensibility for future applications.',
+        'This template served as the foundational framework for notable projects such as commit_creator_utility from luisvent and mac-proxy-manager from ZhiaDev.'
       ]
     },
     {
@@ -120,7 +120,8 @@ export class ExperienceComponent implements OnInit {
       descriptions: [
         'A Python-based academic project focused on developing predictive models for daily COVID-19 confirmed cases in Hong Kong.',
         'Objective: To analyze and understand disease progression by forecasting daily confirmed cases using historical data.',
-        'Methodology: Employed a comparative modeling approach, integrating both classical regression techniques (OLS, Ridge, Lasso) and time series analysis (ARIMA) to identify optimal predictive strategies.'
+        'Methodology: Employed a comparative modeling approach, integrating both classical regression techniques (OLS, Ridge, Lasso) and time series analysis (ARIMA) to identify optimal predictive strategies.',
+        'Impact & Learning: Built robust models demonstrating analytical and programming skills in Python for data preparation, model implementation, and performance evaluation, providing insights into pandemic trends.'
       ]
     },
     {
