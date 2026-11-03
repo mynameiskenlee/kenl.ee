@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule, provideRouter } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NavComponent } from './nav.component';
 
@@ -9,6 +12,8 @@ describe('NavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterModule, MatIconModule, MatTooltipModule],
+      providers: [provideRouter([])],
       declarations: [ NavComponent ]
     })
     .compileComponents();

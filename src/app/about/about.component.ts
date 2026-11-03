@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { faGithubSquare, faLinkedin, faHackerrank, faInstagramSquare, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { cibLeetcode } from '@coreui/icons';
 import content from '../../content/site.json';
@@ -21,6 +21,7 @@ const FA_ICONS: Record<string, IconDefinition> = {
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class AboutComponent implements OnInit {
