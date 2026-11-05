@@ -9,3 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    ignore:
+      # Remove once Angular's build tools support TypeScript 7.
+      - dependency-name: "typescript"
+        versions: ["7.x"]
