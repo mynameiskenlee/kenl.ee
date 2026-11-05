@@ -5,7 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    standalone: true
 })
 export class FooterComponent implements OnInit {
   year = new Date().getFullYear();

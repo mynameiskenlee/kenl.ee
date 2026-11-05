@@ -2,7 +2,6 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     display: inline-block;
 }
 
@@ -10,20 +9,45 @@ li {
     float: left;
 }
 
-mat-icon {
+svg {
     padding: 0 10px;
     color: #ffffff;
     opacity: 0.5;
-    font-size: max(min(7vw, 50px), 25px);
+    fill: currentColor;
     width: max(min(7vw, 50px), 25px);
     height: max(min(7vw, 50px), 25px);
     cursor: pointer;
 }
 
-mat-icon:hover {
+svg:hover {
     opacity: 1;
 }
 
-.activebutton mat-icon {
+.activebutton svg {
     opacity: 1;
+}
+
+a {
+    position: relative;
+    display: inline-block;
+}
+
+a::after {
+    content: attr(aria-label);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #333;
+    color: white;
+    font-size: 16px;
+    white-space: nowrap;
+    visibility: hidden;
+}
+
+a:hover::after,
+a:focus-visible::after {
+    visibility: visible;
 }

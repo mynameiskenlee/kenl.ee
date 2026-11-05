@@ -5,7 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: './pagenotfound.component.html',
     styleUrls: ['./pagenotfound.component.css'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    standalone: true
 })
 export class PagenotfoundComponent implements OnInit {
 
