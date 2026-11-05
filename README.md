@@ -24,7 +24,7 @@ Page content lives in `src/content/site.json` and is consumed twice: by the Angu
 curl -H 'Accept: text/markdown' https://kenl.ee/experience
 ```
 
-When adding a route, add it to `src/app/app-routing.module.ts`, `src/sitemap.xml` and the `RENDERERS` map in `src/content/markdown.mjs`.
+When adding a route, add it to `src/app/app.routes.ts`, `src/sitemap.xml` and the `RENDERERS` map in `src/content/markdown.mjs`.
 
 ## API catalog
 
@@ -61,6 +61,21 @@ npx wrangler pages dev dist/kenl.ee
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Lighthouse CI
+
+Build the production site before auditing it:
+
+```sh
+npm run build
+npm run lhci
+```
+
+Lighthouse runs three mobile audits against `dist/kenl.ee`. The configured upload target publishes reports to temporary public storage. For local reports, use `npm run lhci -- --upload.target=filesystem --upload.outputDir=./.lighthouseci/reports`.
+
+If Chrome is not detected on macOS, prefix the Lighthouse command with `CHROME_PATH='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'`.
+
+The network dependency tree and unused JavaScript coverage are advisory: Lighthouse flags ordinary HTML-to-script requests and Angular runtime code not exercised during initial load. CI enforces a performance score of at least 90 and a script transfer budget of 120 KiB, along with the remaining recommended assertions. Roboto and Material Icons are hosted in `src/assets/fonts` with their licenses to avoid external font request chains.
 
 ## Running end-to-end tests
 

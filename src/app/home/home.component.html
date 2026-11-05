@@ -1,5 +1,8 @@
 <div>
     <h1>{{ name }}</h1>
-    <h3>{{ tagline }}</h3>
+    <p>{{ tagline }}</p>
 </div>
-<img src="assets/cover.webp" onerror="this.onerror=null; this.src='assets/cover.png'" alt="cover" class="cover">
+<picture>
+    <source media="(max-width: 600px)" srcset="assets/cover-mobile.webp">
+    <img src="assets/cover-750.webp" srcset="assets/cover-750.webp 750w, assets/cover-1500.webp 1500w" sizes="750px" width="750" height="500" fetchpriority="high" alt="Ken Lee" class="cover">
+</picture>

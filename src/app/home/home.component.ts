@@ -6,7 +6,7 @@ import content from '../../content/site.json';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    standalone: true
 })
 export class HomeComponent implements OnInit {
   name = content.site.name;

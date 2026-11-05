@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { faGithubSquare, faLinkedin, faHackerrank, faInstagramSquare, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { cibLeetcode } from '@coreui/icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconModule } from '@coreui/icons-angular';
 import content from '../../content/site.json';
 
 interface SocialLink {
@@ -22,7 +24,7 @@ const FA_ICONS: Record<string, IconDefinition> = {
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false
+  imports: [FontAwesomeModule, IconModule]
 })
 export class AboutComponent implements OnInit {
   name = content.site.name;

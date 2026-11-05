@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import content from '../../content/site.json';
 
 interface Experience {
@@ -33,7 +35,7 @@ interface Project {
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css'],
   changeDetection: ChangeDetectionStrategy.Eager,
-  standalone: false
+  imports: [NgFor, NgIf, MatIconModule]
 })
 export class ExperienceComponent implements OnInit {
 
