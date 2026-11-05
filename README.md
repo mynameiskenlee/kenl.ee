@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 The application now uses Angular 22 and TypeScript 6. Use Node.js 24.15.0 or newer in the Node 24 release line (CI uses Node 24).
 
+TypeScript 7 updates are deferred because Angular 22's compiler and build tools require TypeScript `>=6.0 <6.1`. Remove the TypeScript `7.x` ignore rule in `.github/dependabot.yml` when Angular supports it.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
